@@ -1,0 +1,180 @@
+Site1#show running-config
+Building configuration...
+
+Current configuration : 2834 bytes
+!
+! Last configuration change at 13:48:49 UTC Mon Aug 18 2025
+!
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname Site1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$N0tl$QJIfpUZwWAZ6TN7bM8SQ0.
+!
+no aaa new-model
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+ip dhcp excluded-address 10.10.10.1 10.10.10.5
+ip dhcp excluded-address 192.168.20.1 192.168.20.6
+!
+ip dhcp pool Engineering
+ network 10.10.10.0 255.255.255.0
+ default-router 10.10.10.1 
+ lease 4
+!
+ip dhcp pool IT
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1 
+ lease 5
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback1
+ ip address 1.1.1.1 255.255.255.255
+!
+interface Loopback10
+ ip address 10.100.10.10 255.255.255.255
+!
+interface Loopback11
+ ip address 10.100.10.11 255.255.255.255
+!
+interface Loopback12
+ ip address 10.100.10.12 255.255.255.255
+!
+interface Loopback20
+ ip address 192.168.200.20 255.255.255.255
+!
+interface Loopback21
+ ip address 192.168.200.21 255.255.255.255
+!
+interface Loopback22
+ ip address 192.168.200.22 255.255.255.255
+!
+interface Ethernet0/0
+ description to Site 1 LAN
+ no ip address
+!
+interface Ethernet0/0.10
+ description Engineering
+ encapsulation dot1Q 10
+ ip address 10.10.10.1 255.255.255.0
+!
+interface Ethernet0/0.20
+ description IT
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+!
+interface Ethernet0/1
+ description To Site 2 @ E0/1
+ ip address 172.16.1.1 255.255.255.252
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 7 00271A150754
+!
+interface Ethernet0/2
+ description To ISP
+ ip address 100.100.100.1 255.255.255.248
+!
+interface Ethernet0/3
+ description To Stub area
+ ip address 172.16.5.1 255.255.255.252
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 7 00271A150754
+!
+router ospf 1
+ router-id 1.1.1.1
+ area 60 stub
+ network 1.1.1.1 0.0.0.0 area 0
+ network 10.10.10.0 0.0.0.255 area 0
+ network 10.100.10.10 0.0.0.0 area 0
+ network 10.100.10.11 0.0.0.0 area 0
+ network 10.100.10.12 0.0.0.0 area 0
+ network 172.16.1.0 0.0.0.3 area 0
+ network 172.16.5.0 0.0.0.3 area 60
+ network 192.168.20.0 0.0.0.255 area 0
+ network 192.168.200.20 0.0.0.0 area 0
+ network 192.168.200.21 0.0.0.0 area 0
+ network 192.168.200.22 0.0.0.0 area 0
+ default-information originate always
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 100.100.100.2
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 30 0
+ password 7 047802150C2E
+ logging synchronous
+line aux 0
+line vty 0 4
+ exec-timeout 30 0
+ password 7 02250D480809
+ login
+ transport input none
+!
+!
+end

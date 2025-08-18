@@ -1,0 +1,137 @@
+Stub_area#show running-config
+Building configuration...
+
+Current configuration : 1325 bytes
+!
+! Last configuration change at 14:00:49 UTC Mon Aug 18 2025
+!
+version 15.7
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname Stub_area
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$JGM5$E3oFPoqsCVcy9x.bKKaPd.
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ no ip address
+ duplex auto
+!
+interface Ethernet0/0.60
+ encapsulation dot1Q 60
+ ip address 10.60.60.1 255.255.255.0
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/3
+ ip address 172.16.5.2 255.255.255.252
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 7 106D000A0618
+ duplex auto
+!
+router ospf 1
+ area 60 stub
+ network 10.60.60.0 0.0.0.255 area 60
+ network 172.16.5.0 0.0.0.3 area 60
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

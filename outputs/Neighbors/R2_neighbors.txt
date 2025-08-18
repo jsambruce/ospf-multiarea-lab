@@ -1,0 +1,64 @@
+Site2#sh ip ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+1.1.1.1           1   FULL/DR         00:00:32    172.16.1.1      Ethernet0/1
+3.3.3.3           0   FULL/  -           -        172.16.2.2      OSPF_VL0
+3.3.3.3           1   FULL/DR         00:00:36    172.16.2.2      Ethernet0/2
+Site2#
+Site2#show ip ospf
+ Routing Process "ospf 1" with ID 2.2.2.2
+ Start time: 00:00:05.722, Time elapsed: 00:46:51.103
+ Supports only single TOS(TOS0) routes
+ Supports opaque LSA
+ Supports Link-local Signaling (LLS)
+ Supports area transit capability
+ Supports NSSA (compatible with RFC 3101)
+ Event-log enabled, Maximum number of events: 1000, Mode: cyclic
+ It is an area border router
+ Router is not originating router-LSAs with maximum metric
+ Initial SPF schedule delay 5000 msecs
+ Minimum hold time between two consecutive SPFs 10000 msecs
+ Maximum wait time between two consecutive SPFs 10000 msecs
+ Incremental-SPF disabled
+ Minimum LSA interval 5 secs
+ Minimum LSA arrival 1000 msecs
+ LSA group pacing timer 240 secs
+ Interface flood pacing timer 33 msecs
+ Retransmission pacing timer 66 msecs
+ Number of external LSA 4. Checksum Sum 0x0183E4
+ Number of opaque AS LSA 0. Checksum Sum 0x000000
+ Number of DCbitless external and opaque AS LSA 0
+ Number of DoNotAge external and opaque AS LSA 0
+ Number of areas in this router is 2. 2 normal 0 stub 0 nssa
+ Number of areas transit capable is 1
+ External flood list length 0
+ IETF NSF helper support enabled
+ Cisco NSF helper support enabled
+ Reference bandwidth unit is 100 mbps
+    Area BACKBONE(0)
+        Number of interfaces in this area is 4
+        Area has no authentication
+        SPF algorithm last executed 00:45:38.333 ago
+        SPF algorithm executed 4 times
+        Area ranges are
+        Number of LSA 19. Checksum Sum 0x0A3D07
+        Number of opaque link LSA 0. Checksum Sum 0x000000
+        Number of DCbitless LSA 0
+        Number of indication LSA 0
+        Number of DoNotAge LSA 9
+        Flood list length 0
+    Area 1
+        Number of interfaces in this area is 2 (1 loopback)
+        This area has transit capability: Virtual Link Endpoint
+        Area has no authentication
+        SPF algorithm last executed 00:45:38.333 ago
+        SPF algorithm executed 6 times
+        Area ranges are
+        Number of LSA 22. Checksum Sum 0x0C8782
+        Number of opaque link LSA 0. Checksum Sum 0x000000
+        Number of DCbitless LSA 0
+        Number of indication LSA 0
+        Number of DoNotAge LSA 0
+        Flood list length 0
+
+Site2#
