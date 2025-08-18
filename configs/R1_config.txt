@@ -1,9 +1,9 @@
-Site1#show running-config
+Site1#sh run
 Building configuration...
 
-Current configuration : 2834 bytes
+Current configuration : 2845 bytes
 !
-! Last configuration change at 13:48:49 UTC Mon Aug 18 2025
+! Last configuration change at 18:17:35 UTC Mon Aug 18 2025
 !
 version 15.4
 service timestamps debug datetime msec
@@ -23,7 +23,7 @@ mmi polling-interval 60
 no mmi auto-configure
 no mmi pvc
 mmi snmp-timeout 180
-!
+!         
 !
 !
 !
@@ -46,7 +46,7 @@ ip dhcp pool IT
  network 192.168.20.0 255.255.255.0
  default-router 192.168.20.1 
  lease 5
-!
+!         
 !
 !
 no ip domain lookup
@@ -69,7 +69,7 @@ redundancy
 ! 
 !
 !
-!
+!         
 !
 !
 !
@@ -132,7 +132,7 @@ interface Ethernet0/3
 !
 router ospf 1
  router-id 1.1.1.1
- area 60 stub
+ area 60 stub no-summary
  network 1.1.1.1 0.0.0.0 area 0
  network 10.10.10.0 0.0.0.255 area 0
  network 10.100.10.10 0.0.0.0 area 0
@@ -161,7 +161,7 @@ control-plane
 !
 !
 !
-!
+!         
 !
 !
 !
@@ -178,3 +178,5 @@ line vty 0 4
 !
 !
 end
+
+Site1#
