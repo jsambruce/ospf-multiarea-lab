@@ -1,7 +1,16 @@
 # OSPF Lab Documentation
 
-This lab demonstrates OSPF multi-area design, virtual link recovery, stub areas, and redistribution between OSPF and EIGRP.  
-All configurations were tested and verified with `show ip route` and connectivity checks.
+In this project, I built a multi-area OSPF lab to simulate how large enterprise networks manage routing. The goal was to go beyond a simple single-area setup and explore real design challenges such as:
+
+connecting non-backbone areas with a virtual link,
+
+reducing routes using summarization,
+
+blocking external LSA with stub area configs, and
+
+exchanging routes between OSPF and EIGRP through redistribution.
+
+Each section highlights the problem, the configuration applied, and the routing changes before and after implementation.
 
 ---
 
