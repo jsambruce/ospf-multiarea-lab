@@ -48,7 +48,7 @@ Area 2 was not directly connected to Area 0. A virtual link was configured throu
 
 - Virtual link established
 - Backbone adjacency restored (FULL state)
-- Routes from Area 1 successfully learned in Area 0
+- Routes from Area 0 successfully learned in Area 2
 
 ---
 
