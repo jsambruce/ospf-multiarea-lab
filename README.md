@@ -116,7 +116,7 @@ The full EVE-NG lab (with configs) is included in this repo.
 - Download: [multi-area-ospf-lab.zip](lab-files/multi-area-ospf-lab.zip)
 
 ### Import via EVE-NG GUI
-1. On your EVE-NG web interface at the Lab List page, click **Import** at the top.  
+1. On your EVE-NG web interface at the Lab list page, click **Import** at the top.  
 2. Select the downloaded `multi-area-ospf-lab.zip` file and click upload.  
 3. The lab will appear in your list, open it and start the nodes.  
 
